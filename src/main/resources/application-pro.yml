@@ -1,0 +1,8 @@
+      #此处common模块在上线之后不提供启动类。   值打包成jar供其他模块调用。 这里配置端口值为了common模块的人员测试用
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://114.112.104.141:3306/esstat?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: pc
+    password: Xsyozn3h4jf%tcKgNSl7n1OsrJiDf&GGY
+    driver-class-name: com.alibaba.druid.proxy.DruidDriver

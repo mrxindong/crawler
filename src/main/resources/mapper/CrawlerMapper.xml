@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alibaba.mapper.CrawlerMapper">
+    <insert id="insertBatchDrugData" parameterType="java.util.List">
+              INSERT INTO product_detail_price_copy1(
+                                                product_id,
+                                                min_price,
+                                                max_price,
+                                                shop_name,
+                                                website_name,
+                                                website_type,
+                                                url) VALUES
+                <foreach collection="drugDatas" item="item" index="index" separator=",">
+                  (#{item.product_id},
+                    #{item.product_minPrice},
+                    #{item.product_maxPrice},
+                    #{item.shop_name},
+                    #{item.website_name},
+                    #{item.website_type},
+                    #{item.url})
+                </foreach>
+    </insert>
+
+    <insert id="insertBatchProductUrl" parameterType="java.util.List" >
+              INSERT INTO angel_user_url_copy_copy(product_id,website_name,website_type,product_url) VALUES
+        <foreach collection="drugDatas" item="drugData" index="index" separator=",">
+            (#{item.product_id},
+            #{item.website_name},
+            #{item.website_type},
+            #{item.url})
+        </foreach>
+    </insert>
+
+</mapper>
